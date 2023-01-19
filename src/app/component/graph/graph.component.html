@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-12">
+    <canvas
+      baseChart
+      [type]="'line'"
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [plugins]="chartPlugins"
+      [legend]="lineChartLegend"
+      class="is-full-width"
+    >
+    </canvas>
+  </div>
+
+  <div class="col-12 table" *ngIf="showTable">
+    <table class="striped">
+      <thead>
+        <th>y</th>
+        <th *ngFor="let func of graph.funcs">
+          {{ func.label ? func.label : func.raw }}
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let _ of lineChartData.labels; let i = index">
+          <td>{{ lineChartData.labels![i] }}</td>
+          <td *ngFor="let dataset of lineChartData.datasets">
+            {{ dataset.data[i] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-left">
+    <form (change)="draw()">
+      <div class="row" *ngIf="graph">
+        <div class="col">
+          <label>
+            start:
+            <input type="number" [(ngModel)]="graph.x[0]" name="x0" required />
+          </label>
+        </div>
+        <div class="col">
+          <label>
+            end:
+            <input type="number" [(ngModel)]="graph.x[1]" name="x1" required />
+          </label>
+        </div>
+        <div class="col">
+          <label>
+            step:
+            <input type="number" [(ngModel)]="graph.x[2]" name="x2" required />
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="nav-right">
+    <!-- TODO: copy table to clipboard https://jsfiddle.net/christianklemp_imt/xwreo24c/
+    <button class="button clear">copy table</button>
+     -->
+    <button class="button clear" (click)="showTable = !showTable">
+      {{ showTable ? "hide" : "show" }} table
+    </button>
+    <app-share class="button clear" [graph]="graph"></app-share>
+  </div>
+</nav>
+
+<div class="row" *ngIf="graph">
+  <div
+    class="col-4 func bd-light"
+    *ngFor="let func of graph.funcs; let i = index"
+    [class.bd-error]="errors[i]"
+  >
+    <app-func
+      [(func)]="graph.funcs[i]"
+      (funcChange)="rebuild(); draw()"
+      (hasError)="errors[i] = !!$event"
+      [edit]="edit[i]"
+    ></app-func>
+    <hr />
+    <div class="actions is-center">
+      <button
+        class="button clear is-paddingless"
+        [disabled]="errors[i]"
+        (click)="edit[i] = !edit[i]"
+      >
+        <span class="icon edit"></span>{{ edit[i] ? "save" : "edit" }}
+      </button>
+      <!-- TODO: show/hide function
+      <span class="sep">|</span>
+      <a class="button clear is-paddingless"
+        ><span class="icon shown"></span>hide</a
+      >
+      -->
+      <span class="sep">|</span>
+      <a class="button clear is-paddingless" (click)="deleteFunc(i)"
+        ><span class="icon delete"></span>delete</a
+      >
+    </div>
+  </div>
+</div>
+
+<nav class="nav" *ngIf="graph">
+  <div class="nav-right">
+    <a class="button clear" (click)="addFunc()">+ add func</a>
+  </div>
+</nav>

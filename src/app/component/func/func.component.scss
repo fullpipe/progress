@@ -1,0 +1,27 @@
+h5 {
+  margin: 0 0 calc(var(--font-size) / 1.62) 0;
+  font-weight: bolder;
+}
+
+.func-error {
+  font-size: smaller;
+}
+
+code {
+}
+
+.params {
+  padding-top: calc(var(--grid-gutter) / 2);
+  .param-input {
+    label,
+    input {
+      display: inline-block;
+    }
+
+    label {
+      margin-right: 3px;
+    }
+
+    margin-bottom: calc(var(--grid-gutter) / 2);
+  }
+}

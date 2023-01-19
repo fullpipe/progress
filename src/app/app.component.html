@@ -1,0 +1,17 @@
+<main class="container">
+  <app-graph
+    *ngIf="graph"
+    [graph]="graph"
+    (graphChange)="save($event)"
+  ></app-graph>
+
+  <router-outlet></router-outlet>
+
+  <footer class="nav">
+    <div class="nav-center">
+      <a href="https://github.com/fullpipe/progress"
+        ><span class="icon github big"></span
+      ></a>
+    </div>
+  </footer>
+</main>

@@ -1,0 +1,22 @@
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+app-graph {
+  flex: 1;
+  margin-top: var(--grid-gutter);
+  display: block;
+}
+
+footer {
+  min-height: 50px;
+  vertical-align: bottom;
+  text-align: center;
+  //   padding: var(--grid-gutter);
+
+  a {
+    color: var(--color-darkGrey);
+  }
+}

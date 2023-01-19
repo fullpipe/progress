@@ -1,0 +1,27 @@
+// https://jenil.github.io/chota/
+
+:root {
+  --bg-color: #ffffff;
+  --bg-secondary-color: #f3f3f6;
+  --color-primary: #00425a;
+  --color-lightGrey: #d2d6dd;
+  --color-grey: #747681;
+  --color-darkGrey: #3f4144;
+  --color-error: #fc7300;
+  --color-success: #bfdb38;
+  --grid-maxWidth: 120rem;
+  --grid-gutter: 2rem;
+  --font-size: 1.3rem;
+  --font-color: #333333;
+  --font-family-sans: sans-serif;
+  --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
+}
+
+@import url(../node_modules/chota/dist/chota.min.css);
+
+@import "./icons.scss";
+
+code {
+  background-color: var(--color-lightGrey);
+  color: var(--color-primary);
+}

@@ -1,0 +1,26 @@
+<form [formGroup]="form" *ngIf="edit" [class.error]="error">
+  <pre><code>{{ render }}</code></pre>
+  <p class="func-error text-error">{{ error }}</p>
+
+  <label for="alias-label">label:</label>
+  <input id="alias-label" type="text" formControlName="label" />
+
+  <label for="alias-func">func:</label>
+  <input id="alias-func" type="text" formControlName="raw" />
+
+  <div class="params" formArrayName="params">
+    <h6>Params:</h6>
+    <div class="param-input is-left" *ngFor="let name of paramNames">
+      <label for="alias-{{ name }}">{{ name }}: </label>
+      <input id="alias-{{ name }}" type="number" [formControlName]="name" />
+    </div>
+  </div>
+</form>
+
+<ng-container *ngIf="!edit">
+  <h5>{{ func.label ? func.label : func.raw }}</h5>
+  <pre><code>{{ render }}</code></pre>
+  <hr />
+  <pre><code>{{ func.raw }}</code></pre>
+  <pre>{{ func.params | json }}</pre>
+</ng-container>

@@ -1,0 +1,24 @@
+// https://jam-icons.com/
+$icons: "share", "edit", "delete", "hidden", "shown", "github", "plus";
+
+span {
+  &.icon {
+    width: var(--font-size);
+    height: var(--font-size);
+    vertical-align: middle;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @each $icon in $icons {
+      &.#{$icon} {
+        background-image: url("~/src/assets/icons/#{$icon}.svg");
+      }
+    }
+
+    &.big {
+      width: calc(var(--font-size) * 1.62);
+      height: calc(var(--font-size) * 1.62);
+    }
+  }
+}

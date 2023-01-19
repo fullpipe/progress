@@ -1,0 +1,10 @@
+<button class="button clear" [disabled]="copied" *ngIf="graph" #copyBtn>
+  <ng-container [ngSwitch]="copied">
+    <ng-container *ngSwitchCase="true"
+      ><span class="icon share"></span>link copied!</ng-container
+    >
+    <ng-container *ngSwitchDefault>
+      <span class="icon share"></span>share
+    </ng-container>
+  </ng-container>
+</button>

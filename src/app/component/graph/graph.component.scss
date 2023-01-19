@@ -1,0 +1,27 @@
+.func {
+  padding: 5px;
+  .actions {
+    .sep {
+      margin: 0 2px 0 5px;
+      color: var(--color-lightGrey);
+    }
+  }
+}
+
+.table {
+  max-height: 300px;
+  overflow: scroll;
+  border-top: 1px solid var(--color-lightGrey);
+  border-bottom: 1px solid var(--color-lightGrey);
+
+  td,
+  th {
+    padding: 0.5rem 0.4rem;
+  }
+
+  tr {
+    &:hover {
+      background-color: var(--color-success);
+    }
+  }
+}
