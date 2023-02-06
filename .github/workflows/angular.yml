@@ -60,7 +60,7 @@ jobs:
         run: |
           npx --no-install ng build \
             --base-href "${{ steps.pages.outputs.base_path }}" \
-            --deploy-url "${{ steps.pages.outputs.base_path }}"
+            --deploy-url "${{ steps.pages.outputs.base_path }}/"
         # |
         #   ${{ steps.detect-package-manager.outputs.runner }} astro build \
         #     --site "${{ steps.pages.outputs.origin }}" \
