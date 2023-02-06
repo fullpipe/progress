@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Graph } from './model/graph';
-import JSONCrush from 'JSONCrush';
+import JSONCrush from 'jsoncrush';
 import { StorageService } from './service/storage.service';
 
 @Component({

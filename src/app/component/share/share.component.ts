@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Graph } from 'src/app/model/graph';
-import JSONCrush from 'JSONCrush';
+import JSONCrush from 'jsoncrush';
 import * as cp from 'clipboard';
 
 @Component({
