@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Graph } from './model/graph';
 import JSONCrush from 'jsoncrush';
 import { StorageService } from './service/storage.service';
+import { decode } from 'js-base64';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,7 @@ export class AppComponent {
 
       try {
         this.graph = JSON.parse(
-          JSONCrush.uncrush(params.get('graph')!)
+          JSONCrush.uncrush(decode(params.get('graph')!))
         ) as Graph;
 
         let url = new URL(location.href);

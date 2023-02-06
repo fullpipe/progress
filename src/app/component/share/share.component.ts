@@ -9,6 +9,7 @@ import {
 import { Graph } from 'src/app/model/graph';
 import JSONCrush from 'jsoncrush';
 import * as cp from 'clipboard';
+import { encodeURL } from 'js-base64';
 
 @Component({
   selector: 'app-share',
@@ -27,9 +28,9 @@ export class ShareComponent implements DoCheck {
 
   ngDoCheck(): void {
     this.shareLink =
-      window.location.host +
-      '/?graph=' +
-      encodeURIComponent(JSONCrush.crush(JSON.stringify(this.graph)));
+      window.location.href +
+      '?graph=' +
+      encodeURL(JSONCrush.crush(JSON.stringify(this.graph)));
 
     if (this.copyBtn) {
       this.copyBtn.nativeElement.dataset['clipboardText'] = this.shareLink;
